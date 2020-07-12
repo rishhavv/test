@@ -3,11 +3,12 @@ import { Text, View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
 
-const Final = ({ id, total }) => {
+const Final = ({ id, total, date }) => {
   return (
     <View style={style.body}>
       <Text style={style.title}>{id}</Text>
-      <Text style={style.tagline}>Rs. {total}</Text>
+      <Text style={style.total}>Rs. {total}</Text>
+      <Text>{date}</Text>
     </View>
   );
 };
@@ -33,15 +34,16 @@ const style = StyleSheet.create({
     textAlign: "right",
     color: "black",
   },
-  tagline: {
+  total: {
     minHeight: 44,
     maxHeight: 54,
     fontSize: 16,
-    left: 7,
-    right: 5,
+
     fontFamily: "sans-serif-condensed",
     color: "#6b6b6b",
     width: "98%",
+    textAlign: "right",
+    color: "green",
   },
   title: {
     fontSize: 25,

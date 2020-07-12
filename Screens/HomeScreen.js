@@ -8,8 +8,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import OrderList from "../Components/OrderList";
 import HomeHooks from "../hooks/useHomesScreen";
 import DropDownPicker from "react-native-dropdown-picker";
+import { color } from "react-native-reanimated";
 const HomeScreen = () => {
-  const [val, changeVal] = useState("");
+  const [val, changeVal] = useState(2);
   const [
     HomePostsData,
     HomePosts,
@@ -22,15 +23,19 @@ const HomeScreen = () => {
       <View style={style.card}>
         <View style={style.flex}>
           <Text style={style.flexBox}>total</Text>
-          <Text style={style.flexBox}>12,651</Text>
-          <Text style={style.flexBox}>total</Text>
-          <Text style={style.flexBox}>12,651</Text>
+          <Text style={(style.flexBox, { color: "green", fontSize: 35 })}>
+            ₹ 12,651
+          </Text>
+          <Text style={style.flexBox}>Restaurant</Text>
+          <Text style={style.flexBox}>₹ 20,827</Text>
         </View>
         <View style={style.flex}>
-          <Text style={style.flexBox}>total</Text>
-          <Text style={style.flexBox}>12,651</Text>
-          <Text style={style.flexBox}>total</Text>
-          <Text style={style.flexBox}>12,651</Text>
+          <Text style={style.flexBox}>Orders</Text>
+          <Text style={(style.flexBox, { color: "green", fontSize: 35 })}>
+            ₹ 5689
+          </Text>
+          <Text style={style.flexBox}>Fastor</Text>
+          <Text style={style.flexBox}>₹ 2,651</Text>
         </View>
       </View>
       <Picker

@@ -4,45 +4,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./Screens/HomeScreen";
 import LoginScreen from "./Screens/Login";
-
 const RootStack = createStackNavigator();
 
 const App = () => {
-  const [isSignedIn, SetLoggedIn] = useState(false);
-  // useEffect(() => {
-  //   CheckLoggedIn();
-  // });
-  // const CheckLoggedIn = () => {
-  //    => {
-  //     if (user) {
-  //       console.log("CheckLoggedIn");
-  //       SetLoggedIn(true);
-  //     } else {
-  //       console.log(" not logged in! check");
-  //       SetLoggedIn(false);
-  //     }
-  //   });
-  // };
   const RenderNavigation = () => {
-    if (isSignedIn) {
-      return (
-        <NavigationContainer>
-          <RootStack.Navigator headerMode="none" initialRouteName="Login">
-            <RootStack.Screen name="NewWorkAdd" component={mainPage} />
-          </RootStack.Navigator>
-        </NavigationContainer>
-      );
-    } else if (!isSignedIn) {
-      return (
-        <NavigationContainer>
-          <RootStack.Navigator headerMode="none" initialRouteName="LoginScreen">
-            <RootStack.Screen name="LoginScreen" component={HomeScreen} />
-          </RootStack.Navigator>
-        </NavigationContainer>
-      );
-    } else {
-      return <Loading />;
-    }
+    return (
+      <NavigationContainer>
+        <RootStack.Navigator headerMode="none" initialRouteName="LoginScreen">
+          <RootStack.Screen name="LoginScreen" component={LoginScreen} />
+          <RootStack.Screen name="homeScreen" component={HomeScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    );
   };
   return RenderNavigation();
 };

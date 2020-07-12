@@ -5,7 +5,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 const LoginScreen = () => {
   const [emailText, changeEmailtext] = useState("");
   const [passwordText, changePasswordText] = useState("");
-  const loginLogic = useLogin({ emailText, passwordText });
+  const [loginLogic, loginVal] = useLogin({ emailText, passwordText });
+
   return (
     <View>
       <Text>email</Text>

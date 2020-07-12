@@ -2,11 +2,8 @@ import React from "react";
 import { ScrollView, TouchableOpacity, StyleSheet } from "react-native";
 import Final from "../Components/Final";
 import { FlatList } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
 
 const OrderList = ({ data }) => {
-  const navigation = useNavigation();
-
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       <FlatList
@@ -16,7 +13,11 @@ const OrderList = ({ data }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity>
-              <Final id={item.order_id} total={item.subtotal} />
+              <Final
+                id={item.order_id}
+                total={item.subtotal}
+                date={item.timestamp}
+              />
             </TouchableOpacity>
           );
         }}
@@ -35,7 +36,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 8,
   },
   container: {
-    marginBottom: 150,
+    marginBottom: 100,
     backgroundColor: "#F8F7F7",
   },
 });
