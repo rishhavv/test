@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import HomeScreen from "./Screens/HomeScreen";
 import LoginScreen from "./Screens/Login";
 
 const RootStack = createStackNavigator();
@@ -36,7 +36,7 @@ const App = () => {
       return (
         <NavigationContainer>
           <RootStack.Navigator headerMode="none" initialRouteName="LoginScreen">
-            <RootStack.Screen name="LoginScreen" component={LoginScreen} />
+            <RootStack.Screen name="LoginScreen" component={HomeScreen} />
           </RootStack.Navigator>
         </NavigationContainer>
       );

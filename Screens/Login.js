@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { TextInput, Text, Label, View, Button } from "react-native";
-
+import useLogin from "../hooks/useLoginHook";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const LoginScreen = () => {
   const [emailText, changeEmailtext] = useState("");
   const [passwordText, changePasswordText] = useState("");
-
+  const loginLogic = useLogin({ emailText, passwordText });
   return (
     <View>
       <Text>email</Text>
@@ -19,7 +20,9 @@ const LoginScreen = () => {
         onChangeText={(text) => changePasswordText(text)}
         value={passwordText}
       />
-      <Button title="login" />
+      <TouchableOpacity onPress={() => loginLogic({ emailText, passwordText })}>
+        <Text>lodasdad</Text>
+      </TouchableOpacity>
     </View>
   );
 };
