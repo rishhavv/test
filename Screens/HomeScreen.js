@@ -7,15 +7,15 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import OrderList from "../Components/OrderList";
 import HomeHooks from "../hooks/useHomesScreen";
-
+import DropDownPicker from "react-native-dropdown-picker";
 const HomeScreen = () => {
-  const [menu, changeMenu] = useState("1");
+  const [val, changeVal] = useState("");
   const [
     HomePostsData,
     HomePosts,
     errorMessage,
     HomeLoadingIndicator,
-  ] = HomeHooks({ menu });
+  ] = HomeHooks({ val });
   return (
     <View style={style.container}>
       <Text style={style.heading}>Orders</Text>
@@ -33,18 +33,20 @@ const HomeScreen = () => {
           <Text style={style.flexBox}>12,651</Text>
         </View>
       </View>
+      <Picker
+        selectedValue={val}
+        style={{ height: 50, width: 150, top: hp("7%") }}
+        onValueChange={async (itemValue, itemIndex) => {
+          await changeVal(itemValue),
+            await console.log(val),
+            await HomePostsData({ val });
+        }}
+      >
+        <Picker.Item label="Today" value="2" />
+        <Picker.Item label="past 7 days" value="7" />
+        <Picker.Item label="past month" value="30" />
+      </Picker>
       <ScrollView style={style.container2}>
-        <Picker
-          selectedValue={menu}
-          style={{ height: 50, width: 150 }}
-          onValueChange={
-            ((itemValue, itemIndex) => changeMenu(itemValue), HomePostsData())
-          }
-        >
-          <Picker.Item label="Today" value="1" />
-          <Picker.Item label="past 7 days" value="7" />
-          <Picker.Item label="past month" value="30" />
-        </Picker>
         <OrderList data={HomePosts} />
       </ScrollView>
     </View>
@@ -82,7 +84,7 @@ const style = StyleSheet.create({
     width: wp("50%"),
   },
   container2: {
-    top: hp("15%"),
+    top: hp("10%"),
     height: hp("50%"),
   },
 });

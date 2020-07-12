@@ -35,7 +35,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 8,
   },
   container: {
-    marginBottom: 100,
+    marginBottom: 150,
     backgroundColor: "#F8F7F7",
   },
 });

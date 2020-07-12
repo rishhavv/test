@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import fetchApi from "../api/FetchAPI";
 import Axios from "axios";
 
-export default ({ menu }) => {
+export default ({ val }) => {
   const [HomePosts, setHomePosts] = useState([]);
   const [errorMessage, setError] = useState("");
   const [HomeLoadingIndicator, setHomeLoadingIndicator] = useState(false);
@@ -18,16 +18,17 @@ export default ({ menu }) => {
 
     try {
       const wapis = await Axios.get(
-        `http://staging.fastor.in/v1/web/orders?pass=demopass&days=${menu}`,
+        `http://staging.fastor.in/v1/web/orders?pass=demopass&days=${val}`,
         config
       );
-      console.log(wapis.data);
+
       return setHomePosts(wapis.data.data), setHomeLoadingIndicator(false);
     } catch (err) {
       setError("L lag gye HomePosts");
       console.log("wapis");
     }
   };
+
   useEffect(() => {
     HomePostsData();
     console.log("called");
