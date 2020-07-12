@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 const Final = ({ id, total, date }) => {
   return (
     <View style={style.body}>
-      <Text style={style.title}>{id}</Text>
+      <Text style={style.title}>#{id}</Text>
       <Text style={style.total}>Rs. {total}</Text>
       <Text>{date}</Text>
     </View>

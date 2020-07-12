@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import querystring from "querystring";
 import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
 
 export default ({ emailText, passwordText }) => {
   const navigation = useNavigation();
@@ -31,6 +32,7 @@ export default ({ emailText, passwordText }) => {
       })
       .catch((err) => {
         console.log(err);
+        Alert.alert("Wrong email/password");
       });
   };
 
